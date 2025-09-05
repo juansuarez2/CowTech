@@ -1,4 +1,4 @@
-package Flujo;
+package flujo;
 
 public class loteMenu {
 }
