@@ -1,4 +1,5 @@
 import database.DatabaseConnection;
+import menu.RazaMenu;
 
 import java.sql.SQLException;
 
@@ -10,6 +11,12 @@ public class Main {
             DatabaseConnection.getInstacia().getConnection();
         }catch (SQLException e){
             System.out.println(e.getMessage());
+        }
+        try {
+            RazaMenu menu = new RazaMenu();
+            menu.mostrarMenu();
+        }catch (Exception e){
+            System.out.println("No se pudo conectar");
         }
     }
 }
