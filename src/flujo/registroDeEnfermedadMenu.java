@@ -1,10 +1,10 @@
 package flujo;
 
-import models.registroDeEnfermedad;
+import models.registroEnfermedad;
 import dao.registroDeEnfermedadDao;
 import java.sql.*;
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
 
 public class registroDeEnfermedadMenu {
     private final registroDeEnfermedadDao dao;
@@ -78,6 +78,46 @@ public class registroDeEnfermedadMenu {
         boolean estado = sc.nextBoolean();
         sc.nextLine();
         String tipoEvento = sc.nextLine();
-        dao.crearRegistroEnfermedad(new registroDeEnfermedad(idRegistro, idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
+        dao.crearRegistroEnfermedad(new registroEnfermedad(idRegistro, idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
+    }
+
+    private void listarRegistroEnfermedad() throws SQLException{
+        List<registroEnfermedad> registros = dao.listarRegistroEnfermedad();
+        if (registros.isEmpty()) {
+            System.out.println("Evento medico vacío.");
+        } else {
+            for(registroEnfermedad REGISTRO: registros){
+                REGISTRO.mostrarRegistro();
+            }
+        }
+    }
+
+    private void editarRegistroEnfermedad() throws SQLException{
+        System.out.print("ID DEL REGISTRO A EDITAR: ");
+        int idRegistro = sc.nextInt();
+        sc.nextLine();
+        System.out.print("ID DE LA ENFERMEDAD: ");
+        int idEnfermedad = sc.nextInt();
+        sc.nextLine();
+        System.out.print("CÓDIGO DEL ANIMAL: ");
+        int idAnimal = sc.nextInt();
+        sc.nextLine();
+        System.out.print("NUEVA FECHA DE INICIO(AÑO-MES-DIA): ");
+        Date fechaIni = Date.valueOf(sc.nextLine());
+        sc.nextLine();
+        System.out.print("NUEVA FECHA FINAL (AÑO-MES-DIA): ");
+        Date fechaFin = Date.valueOf(sc.nextLine());
+        sc.nextLine();
+        System.out.print("NUEVO ESTADO: ");
+        boolean estado = sc.nextBoolean();
+        sc.nextLine();
+        dao.editarRegistroEnfermedad(idRegistro, idEnfermedad, idAnimal, fechaIni, fechaFin, estado);
+    }
+
+    private void borrarRegistroEnfermedad() throws SQLException{
+        System.out.print("ID DEL REGISTRO DE ENFERMEDAD A ELIMINAR: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        dao.borrarRegistroEnfermedad(id);
     }
 }

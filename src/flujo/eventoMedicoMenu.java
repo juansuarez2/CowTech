@@ -2,8 +2,7 @@ package flujo;
 
 import models.eventoMedico;
 import dao.eventoMedicoDao;
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 import java.util.List;
 
@@ -71,22 +70,41 @@ public class eventoMedicoMenu {
         System.out.print("Fecha (Año-Mes-Dia): ");
         Date fecha = Date.valueOf(sc.nextLine());
         sc.nextLine();
-        System.out.print("CODIGO ANIMAL: ");
+        System.out.print("CÓDIGO ANIMAL: ");
         int idAniaml = sc.nextInt();
         sc.nextLine();
-        System.out.print("EVENTO: ");
-        String tipoEvento = sc.nextLine();
-        dao.crearEventoMedico(new eventoMedico(idEvento, fecha, eventoMedico.tipoEvento.valueOf(tipoEvento), idAniaml, idMedicamento, idEnfermedad));
+        System.out.print("EVENTO (VACUNACIÓN, REVISIÓN, PARTO, CIRUGÍA, REHABILITACIÓN) : ");
+        String evento = sc.nextLine();
+        dao.crearEventoMedico(new eventoMedico(idEvento, fecha, eventoMedico.tipoEvento.valueOf(evento), idAniaml, idMedicamento, idEnfermedad));
     }
 
     private void listarEventoMedico() throws SQLException{
-        List<eventoMedico> eventos = null;//dao.listarUsuarios();
+        List<eventoMedico> eventos = dao.listarEventosMedico();
         if (eventos.isEmpty()) {
-            System.out.println("Evento medico vacio.");
+            System.out.println("Evento medico vacío.");
         } else {
             for(eventoMedico EVENTO: eventos){
                 EVENTO.mostrarEventoMedico();
             }
         }
+    }
+
+    private void editarEventoMedico() throws SQLException{
+        System.out.print("ID DE EVENTO A EDITAR: ");
+        int idEvento = sc.nextInt();
+        sc.nextLine();
+        System.out.print("FECHA (AÑO-MES-DIA): ");
+        Date fecha = Date.valueOf(sc.nextLine());
+        sc.nextLine();
+        System.out.print("EVENTO (VACUNACIÓN, REVISIÓN, PARTO, CIRUGÍA, REHABILITACIÓN) : ");
+        String evento = sc.nextLine();
+        dao.editarEventoMedico(idEvento, fecha, evento);
+    }
+
+    private void borrarEventoMedico() throws SQLException{
+        System.out.print("ID DE EVENTO A ELIMINAR: ");
+        int idEvento = sc.nextInt();
+        sc.nextLine();
+        dao.borrarEventoMedico(idEvento);
     }
 }
