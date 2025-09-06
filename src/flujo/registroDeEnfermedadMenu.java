@@ -48,9 +48,9 @@ public class registroDeEnfermedadMenu {
         try {
             switch (opcion) {
                 case 1 -> crearRegistroEnfermedad();
-                //case 2 -> listarRegistrosEnfermedad();
-                //case 3 -> editarEventoMedico();
-                //case 4 -> borrarEventoMedico();
+                case 2 -> listarRegistroEnfermedad();
+                case 3 -> editarRegistroEnfermedad();
+                case 4 -> borrarRegistroEnfermedad();
                 default -> System.out.println("❌ Opción inválida.");
             }
         } catch (SQLException e) {
