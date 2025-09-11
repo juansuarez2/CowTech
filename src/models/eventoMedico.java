@@ -17,12 +17,21 @@ public class eventoMedico {
     private int idRegistroMedicamento;
     private int idRegistroDeEnfermedad;
 
+    public eventoMedico(Date fecha, tipoEvento evento, int codigoAnimal, int idRegistroMedicamento, int idRegistroDeEnfermedad){
+        this.codigoAnimal = codigoAnimal;
+        this.idRegistroMedicamento = idRegistroMedicamento;
+        this.idRegistroDeEnfermedad = idRegistroDeEnfermedad;
+        this.evento = evento;
+        this.fecha = fecha;
+    }
+
     public eventoMedico(int id, Date fecha, tipoEvento evento, int codigoAnimal, int idRegistroMedicamento, int idRegistroDeEnfermedad){
         this.codigoAnimal = codigoAnimal;
         this.idRegistroMedicamento = idRegistroMedicamento;
         this.idRegistroDeEnfermedad = idRegistroDeEnfermedad;
         this.evento = evento;
         this.fecha = fecha;
+        this.id = id;
     }
 
     //Getters//

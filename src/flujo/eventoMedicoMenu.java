@@ -58,9 +58,6 @@ public class eventoMedicoMenu {
     }
 
     private void crearEventoMedico() throws SQLException{
-        System.out.print("ID EVENTO: ");
-        int idEvento = sc.nextInt();
-        sc.nextLine();
         System.out.print("ID ENFERMEDAD: ");
         int idEnfermedad = sc.nextInt();
         sc.nextLine();
@@ -75,7 +72,7 @@ public class eventoMedicoMenu {
         sc.nextLine();
         System.out.print("EVENTO (VACUNACIÓN, REVISIÓN, PARTO, CIRUGÍA, REHABILITACIÓN) : ");
         String evento = sc.nextLine();
-        dao.crearEventoMedico(new eventoMedico(idEvento, fecha, eventoMedico.tipoEvento.valueOf(evento), idAniaml, idMedicamento, idEnfermedad));
+        dao.crearEventoMedico(new eventoMedico(fecha, eventoMedico.tipoEvento.valueOf(evento), idAniaml, idMedicamento, idEnfermedad));
     }
 
     private void listarEventoMedico() throws SQLException{

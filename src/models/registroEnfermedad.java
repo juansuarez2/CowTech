@@ -10,6 +10,14 @@ public class registroEnfermedad {
     private Date fechaFinal;
     private boolean estado;
 
+    public registroEnfermedad(int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
+        this.idEnfermedad = idEnfermedad;
+        this.idAnimal = idAnimal;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+        this.estado = estado;
+    }
+
     public registroEnfermedad(int id, int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
         this.id = id;
         this.idEnfermedad = idEnfermedad;

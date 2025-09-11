@@ -59,9 +59,6 @@ public class registroDeEnfermedadMenu {
     }
 
     private void crearRegistroEnfermedad() throws SQLException{
-        System.out.print("ID REGISTRO: ");
-        int idRegistro = sc.nextInt();
-        sc.nextLine();
         System.out.print("ID ENFERMEDAD: ");
         int idEnfermedad = sc.nextInt();
         sc.nextLine();
@@ -78,7 +75,7 @@ public class registroDeEnfermedadMenu {
         boolean estado = sc.nextBoolean();
         sc.nextLine();
         String tipoEvento = sc.nextLine();
-        dao.crearRegistroEnfermedad(new registroEnfermedad(idRegistro, idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
+        dao.crearRegistroEnfermedad(new registroEnfermedad(idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
     }
 
     private void listarRegistroEnfermedad() throws SQLException{
