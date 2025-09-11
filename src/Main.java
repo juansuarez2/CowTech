@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
         try {
-            DatabaseConnection.getInstacia().getConnection();
+            DatabaseConnection.getInstancia().getConnection();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }

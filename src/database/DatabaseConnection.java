@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-    private static DatabaseConnection intancia;
+    private static DatabaseConnection Instancia;
     private Connection connection;
 
     private static Properties reader = new Properties();
@@ -37,13 +37,13 @@ public class DatabaseConnection {
         }
     }
 
-    public static DatabaseConnection getInstacia() throws SQLException{
-        if(intancia!= null){
-            return intancia;
+    public static DatabaseConnection getInstancia() throws SQLException{
+        if(Instancia!= null){
+            return Instancia;
         }
         else {
-            intancia= new DatabaseConnection();
-            return intancia;
+            Instancia= new DatabaseConnection();
+            return Instancia;
         }
     }
     public Connection getConnection() throws SQLException {
