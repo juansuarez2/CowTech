@@ -1,7 +1,7 @@
 package dao;
 
 import database.DatabaseConnection;
-import entidad.Medicamento;
+import models.Medicamento;
 import enums.TipoMed;
 
 import java.sql.PreparedStatement;

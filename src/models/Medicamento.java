@@ -1,4 +1,4 @@
-package entidad;
+package models;
 
 import enums.TipoMed;
 

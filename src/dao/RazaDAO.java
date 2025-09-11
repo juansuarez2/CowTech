@@ -2,7 +2,7 @@ package dao;
 
 
 import database.DatabaseConnection;
-import entidad.Raza;
+import models.Raza;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ public class RazaDAO {
 
         String consulta = "INSERT INTO raza (nombre) VALUES (?)";
         try {
-            PreparedStatement ps = DatabaseConnection.getInstacia().getConnection().prepareStatement(consulta);
+            PreparedStatement ps = DatabaseConnection.getInstancia().getConnection().prepareStatement(consulta);
             ps.setString(1, nombre);
 
             ps.executeUpdate();
@@ -33,13 +33,16 @@ public class RazaDAO {
 
         String consulta = "UPDATE raza SET nombre =? WHERE raza.id =?";
         try {
-            PreparedStatement ps = DatabaseConnection.getInstacia().getConnection().prepareStatement(consulta);
+            PreparedStatement ps = DatabaseConnection.getInstancia().getConnection().prepareStatement(consulta);
             ps.setString(1, nombre);
             ps.setInt(2, id);
 
-            ps.executeUpdate();
-
-            System.out.println("Raza modificada correctamente");
+            int existe =ps.executeUpdate();
+            if(existe==0){
+                System.out.println("No existe una raza con ese Id");
+            }else {
+                System.out.println("Raza modificada correctamente");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +54,7 @@ public class RazaDAO {
         String consulta = "SELECT * FROM raza";
 
         try {
-            Statement st = DatabaseConnection.getInstacia().getConnection().createStatement();
+            Statement st = DatabaseConnection.getInstancia().getConnection().createStatement();
             ResultSet rs = st.executeQuery(consulta);
 
             while (rs.next()) {
@@ -72,11 +75,15 @@ public class RazaDAO {
         String consulta = "DELETE FROM raza WHERE raza.id=?";
 
         try {
-            PreparedStatement ps = DatabaseConnection.getInstacia().getConnection().prepareStatement(consulta);
+            PreparedStatement ps = DatabaseConnection.getInstancia().getConnection().prepareStatement(consulta);
             ps.setInt(1, id);
-            ps.executeUpdate();
+            int existe =ps.executeUpdate();
 
-            System.out.println("Raza eliminada");
+            if(existe==0){
+                System.out.println("No existe una raza con ese Id");
+            }else {
+                System.out.println("Raza eliminada");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

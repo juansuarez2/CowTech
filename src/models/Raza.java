@@ -1,9 +1,13 @@
-package entidad;
+package models;
 
 public class Raza {
 
     private int id;
     private String nombre;
+
+    public Raza() {
+
+    }
 
     public Raza(int id, String nombre){
         this.id=id;

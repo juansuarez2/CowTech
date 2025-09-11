@@ -1,10 +1,9 @@
-package menu;
+package flujos;
 
 import dao.MedicamentoDAO;
-import entidad.Medicamento;
+import models.Medicamento;
 import enums.TipoMed;
 
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 

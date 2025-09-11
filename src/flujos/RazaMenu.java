@@ -1,7 +1,7 @@
-package menu;
+package flujos;
 
 import dao.RazaDAO;
-import entidad.Raza;
+import models.Raza;
 
 import java.util.List;
 import java.util.Scanner;
@@ -42,6 +42,8 @@ public class RazaMenu {
                 case 4:
                     eliminarRaza();
                     break;
+                default:
+                    System.out.println("Opcion Invalida");
             }
 
         } catch (Exception e) {
