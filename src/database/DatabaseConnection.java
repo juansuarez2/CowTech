@@ -37,7 +37,7 @@ public class DatabaseConnection {
         }
     }
 
-    public static DatabaseConnection getInstacia() throws SQLException{
+    public static DatabaseConnection getInstancia() throws SQLException{
         if(intancia!= null){
             return intancia;
         }
