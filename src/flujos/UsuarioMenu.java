@@ -1,4 +1,4 @@
-package flujo;
+package flujos;
 
 import dao.UsuarioDao;
 import models.Usuario;

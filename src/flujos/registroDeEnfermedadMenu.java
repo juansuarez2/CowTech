@@ -1,8 +1,10 @@
-package flujo;
+package flujos;
 
-import models.registroEnfermedad;
 import dao.registroDeEnfermedadDao;
-import java.sql.*;
+import models.registroEnfermedad;
+
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 

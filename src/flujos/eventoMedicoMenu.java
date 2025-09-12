@@ -1,10 +1,12 @@
-package flujo;
+package flujos;
 
-import models.eventoMedico;
 import dao.eventoMedicoDao;
-import java.sql.*;
-import java.util.Scanner;
+import models.eventoMedico;
+
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 public class eventoMedicoMenu {
     private final eventoMedicoDao dao;
