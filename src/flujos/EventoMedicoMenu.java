@@ -95,6 +95,19 @@ public class EventoMedicoMenu {
         }
     }
 
+    private void listarEventoMedicoPorAnimal() throws SQLException{
+        System.out.print("CÓDIGO ANIMAL DEL QUE DESEA BUSCAR: ");
+        int idAniaml = sc.nextInt();
+        List<EventoMedico> eventos = dao.listarEventosMedicoPorAnimal(idAniaml);
+        if (eventos.isEmpty()) {
+            System.out.println("Evento medico vacío.");
+        } else {
+            for(EventoMedico EVENTO: eventos){
+                EVENTO.mostrarEventoMedico();
+            }
+        }
+    }
+
     private void editarEventoMedico() throws SQLException{
         System.out.print("ID DE EVENTO A EDITAR: ");
         int idEvento = sc.nextInt();
