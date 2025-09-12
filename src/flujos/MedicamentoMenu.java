@@ -20,36 +20,43 @@ public class MedicamentoMenu {
 
     public void mostrarMenu(){
         try {
+            while (true) {
+                System.out.println("\n===Gestion de Medicamentos===");
+                System.out.println("1. Agregar Medicamento");
+                System.out.println("2. Listar Medicamentos");
+                System.out.println("3. Editar Medicamento");
+                System.out.println("4. Borrar Medicamento");
+                System.out.println("5. Salir");
+                System.out.println("Opcion:");
 
-            System.out.println("\n===Gestion de Medicamentos===");
-            System.out.println("1. Agregar Medicamento");
-            System.out.println("2. Listar Medicamentos");
-            System.out.println("3. Editar Medicamento");
-            System.out.println("4. Borrar Medicamento");
-            System.out.println("5. Salir");
-            System.out.println("Opcion:");
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
 
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 1: agregarMedicamento();
-                    break;
-                case 2: listarMedicamentos();
-                    break;
-                case 3: modificarMedicamento();
-                    break;
-                case 4: eliminarMedicamento();
-                    break;
-                case 5:
-                    break;
-                default:
-                    System.out.println("Opcion Invalida");
+                switch (opcion) {
+                    case 1:
+                        agregarMedicamento();
+                        break;
+                    case 2:
+                        listarMedicamentos();
+                        break;
+                    case 3:
+                        modificarMedicamento();
+                        break;
+                    case 4:
+                        eliminarMedicamento();
+                        break;
+                    case 5:return;
+                    default:
+                        System.out.println("Opcion Invalida");
+                }
+                System.out.println("Presiona Enter para continuar...");
+                scanner.nextLine(); // Espera hasta que el usuario presione Enter
+                System.out.println("¡Continuamos!");
             }
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 
     private void agregarMedicamento(){
