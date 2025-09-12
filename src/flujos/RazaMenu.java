@@ -16,39 +16,46 @@ public class RazaMenu {
         this.razaDAO = new RazaDAO();
     }
 
-    public void mostrarMenu(){
+    public void mostrarMenu() {
         try {
-            System.out.println("\n===Gestion de Razas===");
-            System.out.println("1. Añadir Raza");
-            System.out.println("2. Listar Razas");
-            System.out.println("3. Editar Raza");
-            System.out.println("4. Borrar Raza");
-            System.out.println("5. Salir");
-            System.out.println("Opcion:");
+            while (true) {
+                System.out.println("\n===Gestion de Razas===");
+                System.out.println("1. Añadir Raza");
+                System.out.println("2. Listar Razas");
+                System.out.println("3. Editar Raza");
+                System.out.println("4. Borrar Raza");
+                System.out.println("5. Salir");
+                System.out.println("Opcion:");
 
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (opcion) {
-                case 1:
-                    agregarRaza();
-                    break;
-                case 2:
-                    listarRazas();
-                    break;
-                case 3:
-                    modificarRaza();
-                    break;
-                case 4:
-                    eliminarRaza();
-                    break;
-                default:
-                    System.out.println("Opcion Invalida");
+                switch (opcion) {
+                    case 1:
+                        agregarRaza();
+                        break;
+                    case 2:
+                        listarRazas();
+                        break;
+                    case 3:
+                        modificarRaza();
+                        break;
+                    case 4:
+                        eliminarRaza();
+                        break;
+                    case 5: return;
+
+                    default:
+                        System.out.println("Opcion Invalida");
+                }
+                System.out.println("Presiona Enter para continuar...");
+                scanner.nextLine(); // Espera hasta que el usuario presione Enter
+                System.out.println("¡Continuamos!");
+            }
+            } catch(Exception e){
+                System.out.println(e.getMessage());
             }
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private void agregarRaza(){

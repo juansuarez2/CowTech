@@ -33,6 +33,7 @@ public class EventoMedicoMenu {
         System.out.println("2. Listar eventos");
         System.out.println("3. Editar evento");
         System.out.println("4. Borrar evento");
+        System.out.println("5. Salir");
         System.out.print("Opción: ");
     }
 
@@ -86,6 +87,19 @@ public class EventoMedicoMenu {
 
     private void listarEventoMedico() throws SQLException{
         List<EventoMedico> eventos = dao.listarEventosMedico();
+        if (eventos.isEmpty()) {
+            System.out.println("Evento medico vacío.");
+        } else {
+            for(EventoMedico EVENTO: eventos){
+                EVENTO.mostrarEventoMedico();
+            }
+        }
+    }
+
+    private void listarEventoMedicoPorAnimal() throws SQLException{
+        System.out.print("CÓDIGO ANIMAL DEL QUE DESEA BUSCAR: ");
+        int idAniaml = sc.nextInt();
+        List<EventoMedico> eventos = dao.listarEventosMedicoPorAnimal(idAniaml);
         if (eventos.isEmpty()) {
             System.out.println("Evento medico vacío.");
         } else {

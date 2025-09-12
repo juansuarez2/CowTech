@@ -28,6 +28,7 @@ public class UsuarioMenu {
             System.out.println("2. Listar Usuario");
             System.out.println("3. Editar Usuario");
             System.out.println("4. Eliminar Usuario");
+            System.out.println("5. Listar Usuario por Id");
             System.out.println("0. Salir");
             System.out.println("Opcion:");
 
@@ -47,6 +48,9 @@ public class UsuarioMenu {
                         break;
                     case 4:
                         eliminarUsuario();
+                        break;
+                    case 5:
+                        listarUsuarioPorId();
                         break;
                     case 0://salir
                         break;
@@ -104,6 +108,14 @@ public class UsuarioMenu {
         Usuario nuevoUsuario = new Usuario(0, nombre, apellido, email, password, fechaNacimiento);// Crear objeto Usuario (id = 0 si es autoincremental)
 
         usuarioDao.crearUsuario(nuevoUsuario);// Guardar en la base de datos
+
+    }
+    private void listarUsuarioPorId() throws  SQLException {
+        System.out.println("Ingrese ID de usuario:");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el salto de línea pendiente
+        Usuario usuario = usuarioDao.obtenerPorId(id);
+        System.out.println("Id:  " +usuario.getId() + "  |   Nombre:  " + usuario.getNombre() + "  |   Apellido: " + usuario.getApellido() + "    |   Fecha de nacimiento: " + usuario.getFechaNacimiento() + "    |   Correo: " + usuario.getEmail() + "   |   Contraseña:   " + usuario.getPassword());
 
     }
 

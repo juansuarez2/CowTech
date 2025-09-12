@@ -29,13 +29,26 @@ public class EventoMedicoDao {
         try (Statement st = DatabaseConnection.getInstancia().getConnection().createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
-               /* Medicamento medicamento = new Medicamento();
-                medicamento.setId(rs.getInt("Id"));
-                medicamento.setNombre(rs.getString("Nombre"));
-                String tipo = rs.getString("tipo");
-                medicamento.setTipo(TipoMed.valueOf(tipo.trim().toUpperCase()));
-                medicamentos.add(medicamento);*/
+                EventoMedico evento = new EventoMedico();
+                evento.setId(rs.getInt("id"));
+                evento.setFecha(rs.getDate("fecha"));
+                String tipo = rs.getString("tipoEvento");
+                evento.setEvento(TipoEvento.valueOf(tipo.trim().toUpperCase()));
+                evento.setCodigoAnimal(rs.getInt("idAniaml"));
+                evento.setIdRegistroMedicamento(rs.getInt("idRegistroMedico"));
+                evento.setIdRegistroDeEnfermedad(rs.getInt("idRegistroEnfermedad"));
+                eventos.add(evento);
+            }
+        }
+        return eventos;
+    }
 
+    public List<EventoMedico> listarEventosMedicoPorAnimal(int idAnimal) throws SQLException{
+        List<EventoMedico> eventos = new ArrayList<>();
+        String sql = "SELECT * FROM eventoMedico WHERE idAnimal = ?";
+        try (PreparedStatement ps = DatabaseConnection.getInstancia().getConnection().prepareStatement(sql);
+             ResultSet rs = ps.executeQuery(sql)) {
+            while (rs.next()) {
                 EventoMedico evento = new EventoMedico();
                 evento.setId(rs.getInt("id"));
                 evento.setFecha(rs.getDate("fecha"));
