@@ -1,14 +1,14 @@
 package dao;
 
-import models.registroEnfermedad;
+import models.RegistroEnfermedad;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import database.DatabaseConnection;
 
-public class registroDeEnfermedadDao {
-    public void crearRegistroEnfermedad(registroEnfermedad registro) throws SQLException{
+public class RegistroDeEnfermedadDao {
+    public void crearRegistroEnfermedad(RegistroEnfermedad registro) throws SQLException{
         String sql = "INSERT INTO (id_enfermedad, id_animal, fechaInicio, fechaFinal, estado) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = DatabaseConnection.getInstacia().getConnection().prepareStatement(sql)){
             ps.setInt(1, registro.getIdEnfermedad());
@@ -21,13 +21,13 @@ public class registroDeEnfermedadDao {
         }
     }
 
-    public List<registroEnfermedad> listarRegistroEnfermedad() throws SQLException{
-        List<registroEnfermedad> lista = new ArrayList<>();
+    public List<RegistroEnfermedad> listarRegistroEnfermedad() throws SQLException{
+        List<RegistroEnfermedad> lista = new ArrayList<>();
         String sql = "SELECT * FROM registroEnfermedad";
         try (Statement st = DatabaseConnection.getInstacia().getConnection().createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
-                lista.add(new registroEnfermedad(rs.getInt("id"), rs.getInt("id_enfermedad"), rs.getInt("id_animal"), rs.getDate("fechaInicio"), rs.getDate("fechaFinal"), rs.getBoolean("estado") ));
+                lista.add(new RegistroEnfermedad(rs.getInt("id"), rs.getInt("id_enfermedad"), rs.getInt("id_animal"), rs.getDate("fechaInicio"), rs.getDate("fechaFinal"), rs.getBoolean("estado") ));
             }
         }
         return lista;

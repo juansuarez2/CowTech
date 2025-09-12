@@ -1,21 +1,22 @@
 package flujos;
 
-import dao.eventoMedicoDao;
-import models.eventoMedico;
+import dao.EventoMedicoDao;
+import enums.TipoEvento;
+import models.EventoMedico;
 
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class eventoMedicoMenu {
-    private final eventoMedicoDao dao;
+public class EventoMedicoMenu {
+    private final EventoMedicoDao dao;
     private final Scanner sc;
 
-    public eventoMedicoMenu()
+    public EventoMedicoMenu()
     {
         this.sc = new Scanner(System.in);
-        this.dao = new eventoMedicoDao();
+        this.dao = new EventoMedicoDao();
     }
 
     public void iniciar() {
@@ -73,16 +74,22 @@ public class eventoMedicoMenu {
         int idAniaml = sc.nextInt();
         sc.nextLine();
         System.out.print("EVENTO (VACUNACIÓN, REVISIÓN, PARTO, CIRUGÍA, REHABILITACIÓN) : ");
-        String evento = sc.nextLine();
-        dao.crearEventoMedico(new eventoMedico(fecha, eventoMedico.tipoEvento.valueOf(evento), idAniaml, idMedicamento, idEnfermedad));
+        String tipo = sc.nextLine();
+        EventoMedico evento = new EventoMedico();
+        evento.setFecha(fecha);
+        evento.setEvento(TipoEvento.valueOf(tipo.trim().toUpperCase()));
+        evento.setCodigoAnimal(idAniaml);
+        evento.setIdRegistroMedicamento(idMedicamento);
+        evento.setIdRegistroDeEnfermedad(idEnfermedad);
+        dao.crearEventoMedico(evento);
     }
 
     private void listarEventoMedico() throws SQLException{
-        List<eventoMedico> eventos = dao.listarEventosMedico();
+        List<EventoMedico> eventos = dao.listarEventosMedico();
         if (eventos.isEmpty()) {
             System.out.println("Evento medico vacío.");
         } else {
-            for(eventoMedico EVENTO: eventos){
+            for(EventoMedico EVENTO: eventos){
                 EVENTO.mostrarEventoMedico();
             }
         }

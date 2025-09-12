@@ -1,21 +1,21 @@
 package flujos;
 
-import dao.registroDeEnfermedadDao;
-import models.registroEnfermedad;
+import dao.RegistroDeEnfermedadDao;
+import models.RegistroEnfermedad;
 
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class registroDeEnfermedadMenu {
-    private final registroDeEnfermedadDao dao;
+public class RegistroDeEnfermedadMenu {
+    private final RegistroDeEnfermedadDao dao;
     private final Scanner sc;
 
-    public registroDeEnfermedadMenu()
+    public RegistroDeEnfermedadMenu()
     {
         this.sc = new Scanner(System.in);
-        this.dao = new registroDeEnfermedadDao();
+        this.dao = new RegistroDeEnfermedadDao();
     }
 
     public void iniciar() {
@@ -77,15 +77,15 @@ public class registroDeEnfermedadMenu {
         boolean estado = sc.nextBoolean();
         sc.nextLine();
         String tipoEvento = sc.nextLine();
-        dao.crearRegistroEnfermedad(new registroEnfermedad(idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
+        dao.crearRegistroEnfermedad(new RegistroEnfermedad(idEnfermedad, idAnimal, fechaInicio, fechaFinal, estado));
     }
 
     private void listarRegistroEnfermedad() throws SQLException{
-        List<registroEnfermedad> registros = dao.listarRegistroEnfermedad();
+        List<RegistroEnfermedad> registros = dao.listarRegistroEnfermedad();
         if (registros.isEmpty()) {
             System.out.println("Evento medico vacío.");
         } else {
-            for(registroEnfermedad REGISTRO: registros){
+            for(RegistroEnfermedad REGISTRO: registros){
                 REGISTRO.mostrarRegistro();
             }
         }

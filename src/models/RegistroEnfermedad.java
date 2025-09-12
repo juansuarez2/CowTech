@@ -2,7 +2,7 @@ package models;
 
 import java.sql.Date;
 
-public class registroEnfermedad {
+public class RegistroEnfermedad {
     private int id;
     private int idEnfermedad;
     private int idAnimal;
@@ -10,7 +10,7 @@ public class registroEnfermedad {
     private Date fechaFinal;
     private boolean estado;
 
-    public registroEnfermedad(int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
+    public RegistroEnfermedad(int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
         this.idEnfermedad = idEnfermedad;
         this.idAnimal = idAnimal;
         this.fechaInicio = fechaInicio;
@@ -18,7 +18,7 @@ public class registroEnfermedad {
         this.estado = estado;
     }
 
-    public registroEnfermedad(int id, int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
+    public RegistroEnfermedad(int id, int idEnfermedad, int idAnimal, Date fechaInicio, Date fechaFinal, boolean estado){
         this.id = id;
         this.idEnfermedad = idEnfermedad;
         this.idAnimal = idAnimal;

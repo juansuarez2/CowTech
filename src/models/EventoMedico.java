@@ -1,23 +1,17 @@
 package models;
 
 import java.sql.Date;
+import enums.TipoEvento;
 
-public class eventoMedico {
-    public enum tipoEvento{
-        Vacunacion,
-        Revision,
-        Parto,
-        Cirugia,
-        Rehabilitacion
-    }
+public class EventoMedico {
     private int id;
-    private tipoEvento evento;
+    private TipoEvento evento;
     private Date fecha;
     private int codigoAnimal;
     private int idRegistroMedicamento;
     private int idRegistroDeEnfermedad;
 
-    public eventoMedico(Date fecha, tipoEvento evento, int codigoAnimal, int idRegistroMedicamento, int idRegistroDeEnfermedad){
+    public EventoMedico(Date fecha, TipoEvento evento, int codigoAnimal, int idRegistroMedicamento, int idRegistroDeEnfermedad){
         this.codigoAnimal = codigoAnimal;
         this.idRegistroMedicamento = idRegistroMedicamento;
         this.idRegistroDeEnfermedad = idRegistroDeEnfermedad;
@@ -25,20 +19,14 @@ public class eventoMedico {
         this.fecha = fecha;
     }
 
-    public eventoMedico(int id, Date fecha, tipoEvento evento, int codigoAnimal, int idRegistroMedicamento, int idRegistroDeEnfermedad){
-        this.codigoAnimal = codigoAnimal;
-        this.idRegistroMedicamento = idRegistroMedicamento;
-        this.idRegistroDeEnfermedad = idRegistroDeEnfermedad;
-        this.evento = evento;
-        this.fecha = fecha;
-        this.id = id;
+    public EventoMedico(){
     }
 
     //Getters//
     public int getId() {
         return id;
     }
-    public tipoEvento getEvento() {
+    public TipoEvento getEvento() {
         return evento;
     }
     public Date getFecha() {
@@ -56,8 +44,15 @@ public class eventoMedico {
 
     //Setters//
 
-    public void setEvento(tipoEvento evento) {
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setEvento(TipoEvento evento) {
         this.evento = evento;
+    }
+    public void setCodigoAnimal(int codigoAnimal) {
+        this.codigoAnimal = codigoAnimal;
     }
     public void setFecha(Date fecha) {
         this.fecha = fecha;
