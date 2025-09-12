@@ -33,6 +33,7 @@ public class EventoMedicoMenu {
         System.out.println("2. Listar eventos");
         System.out.println("3. Editar evento");
         System.out.println("4. Borrar evento");
+        System.out.println("5. Salir");
         System.out.print("Opción: ");
     }
 
